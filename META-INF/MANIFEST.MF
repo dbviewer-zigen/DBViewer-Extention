@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DBViewer Extention Plug-in
+Bundle-SymbolicName: dbviewer.extention;singleton:=true
+Bundle-Version: 2.0.0.v20180907
+Bundle-Activator: dbviewer.extention.DBViewerExtention
+Bundle-Vendor: ZIGEN
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text;bundle-version="3.4.0",
+ org.eclipse.ui.views;bundle-version="3.4.1",
+ zigen.plugin.db;bundle-version="2.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Eclipse-LazyStart: true

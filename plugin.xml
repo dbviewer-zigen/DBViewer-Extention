@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+<!-- for Oracle Connector -->
+   <extension
+         point="org.eclipse.ui.views">
+		<category name="DBViewer Plugin" id="zigen.plugin.db">
+      </category>
+      <view
+            allowMultiple="true"
+            category="zigen.plugin.db"
+            class="dbviewer.extention.oracle.views.SessionView"
+            icon="icons/db.gif"
+            id="dbviewer.extention.oracle.views.SessionView"
+            name="Oracle Session">
+      </view>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="dbviewer.extention.oracle.actions.ShowSessionViewAction"
+            targetID="zigen.plugin.db.ui.views.TreeView">
+
+         <action
+               class="dbviewer.extention.oracle.actions.ShowSessionViewAction"
+               icon="icons/db.gif"
+               id="dbviewer.extention.oracle.actions.ShowSessionViewAction2"
+               label="%ShowSessionViewAction.label"
+               menubarPath="additions"
+               tooltip="additions"/>
+         <visibility>
+            <objectClass name="zigen.plugin.db.ui.internal.DataBase"/>
+         </visibility>
+      </viewerContribution>
+
+      <viewerContribution
+            id="dbviewer.extention.oracle.actions.DropUserAction"
+            targetID="zigen.plugin.db.ui.views.TreeView">
+         <action
+               class="dbviewer.extention.oracle.actions.DropUserAction"
+               icon="icons/delete.gif"
+               id="dbviewer.extention.oracle.actions.DropUserAction"
+               label="%DropUserAction.label"
+               menubarPath="additions"
+               tooltip="additions"/>
+         <visibility>
+            <objectClass name="zigen.plugin.db.ui.internal.Schema"/>
+         </visibility>
+      </viewerContribution>
+
+   	</extension>
+
+<!-- for Oracle Connector -->
+
+    <extension
+         point="zigen.plugin.db.columnSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleColumnSearchFactory"
+            name="oracle">
+      </factory>
+   </extension>
+    <extension
+         point="zigen.plugin.db.constraintSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleConstraintSearchFactory"
+            name="oracle">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.mappingFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleMappingFactory"
+            name="oracle">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.sqlCreatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleSQLCreatorFactory"
+            name="oracle">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.statementFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleStatementFactory"
+            name="oracle">
+      </factory>
+   </extension>
+    <extension
+         point="zigen.plugin.db.tableInfoSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleTableInfoSearchFactory"
+            name="oracle">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.validatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleValidatorFactory"
+            name="oracle">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.typePoint">
+      <element name="oracle" type="FUNCTION"/>
+      <element name="oracle" type="PACKAGE"/>
+      <element name="oracle" type="PACKAGE BODY"/>
+      <element name="oracle" type="PROCEDURE"/>
+      <element name="oracle" type="TYPE"/>
+      <element name="oracle" type="TRIGGER"/>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.sourceSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.oracle.rule.OracleSourceSearchFactory"
+            name="oracle">
+      </factory>
+   </extension>
+
+
+<!-- for MYSQL Connector -->
+   <extension
+         point="zigen.plugin.db.typePoint">
+      <element name="mysql" type="FUNCTION"/>
+      <element name="mysql" type="PROCEDURE"/>
+      <element name="mysql" type="TRIGGER"/>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.sourceSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.mysql.rule.MySQLSourceSearchFactory"
+            name="mysql">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.explainActionFactoryPoint">
+      <factory
+            class="dbviewer.extention.mysql.rule.MySQLExplainActionFactory"
+            name="mysql">
+      </factory>
+   </extension>
+   <!-- for postgreSQL Connector-->
+
+   <extension
+         point="zigen.plugin.db.typePoint">
+      <element name="postgresql" type="SEQUENCE"/>
+      <element name="postgresql" type="FUNCTION"/>
+      <element name="postgresql" type="TRIGGER"/>
+
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.tableInfoSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.postgresql.rule.PostgreSQLTableInfoSearchFactory"
+            name="postgresql">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.sqlCreatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.postgresql.rule.PostgreSQLSQLCreatorFactory"
+            name="postgresql">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.sourceSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.postgresql.rule.PostgreSQLSourceSearchFactory"
+            name="postgresql">
+      </factory>
+   </extension>
+
+   <!-- for H2 Connector-->
+
+   <extension
+         point="zigen.plugin.db.typePoint">
+      <element name="h2" type="SEQUENCE"/>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.tableInfoSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.h2.rule.H2TableInfoSearchFactory"
+            name="h2">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.sqlCreatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.h2.rule.H2SQLCreatorFactory"
+            name="h2">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.sourceSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.h2.rule.H2SourceSearchFactory"
+            name="h2">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.explainActionFactoryPoint">
+      <factory
+            class="dbviewer.extention.h2.rule.H2ExplainActionFactory"
+            name="h2">
+      </factory>
+   </extension>
+
+   <!-- for symfoware Connector-->
+
+   <extension
+         point="zigen.plugin.db.typePoint">
+
+      <element name="symfoware" type="SEQUENCE"/>
+      <element name="symfoware" type="FUNCTION"/>
+      <element name="symfoware" type="PROCEDURE"/>
+      <element name="symfoware" type="TRIGGER"/>
+
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.columnSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareColumnSearchFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.mappingFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareMappingFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.schemaSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareSchemaSearchFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+
+
+   <extension
+         point="zigen.plugin.db.sourceSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareSourceSearchFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+
+
+   <extension
+         point="zigen.plugin.db.sqlCreatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareSQLCreatorFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.statementFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareStatementFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+
+
+   <extension
+         point="zigen.plugin.db.tableInfoSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareTableInfoSearchFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.validatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.symfoware.rule.SymfowareValidatorFactory"
+            name="symfoware">
+      </factory>
+   </extension>
+
+
+<!-- for SQL Server Connector -->
+   <extension
+         point="zigen.plugin.db.typePoint">
+      <!--<element name="mysql" type="FUNCTION"/>
+      <element name="mysql" type="PROCEDURE"/>
+      <element name="mysql" type="TRIGGER"/>-->
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.mappingFactoryPoint">
+      <factory
+            class="dbviewer.extention.sqlserver.rule.SQLServerMappingFactory"
+            name="sqlserver">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.mappingFactoryPoint">
+      <factory
+            class="dbviewer.extention.sqlserver.rule.SQLServerMappingFactory"
+            name="microsoft sql server">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.sqlCreatorFactoryPoint">
+      <factory
+            class="dbviewer.extention.sqlserver.rule.SQLServerSQLCreatorFactory"
+            name="sqlserver">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.statementFactoryPoint">
+      <factory
+            class="dbviewer.extention.sqlserver.rule.SQLServerStatementFactory"
+            name="sqlserver">
+      </factory>
+   </extension>
+
+   <extension
+         point="zigen.plugin.db.tableInfoSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.sqlserver.rule.SQLServerTableInfoSearchFactory"
+            name="sqlserver">
+      </factory>
+   </extension>
+   <extension
+         point="zigen.plugin.db.tableInfoSearchFactoryPoint">
+      <factory
+            class="dbviewer.extention.sqlserver.rule.SQLServerTableInfoSearchFactory"
+            name="microsoft sql server">
+      </factory>
+   </extension>
+
+</plugin>
